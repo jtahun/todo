@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:lesson17/constants/theme_constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:todo/constants/theme_constants.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -10,60 +10,59 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  void _navigate( int index){
+  void _navigate(int index) {
     DefaultTabController.of(context).index = index;
-    setState(() {});
+    // setState(() {});
   }
 
   @override
-  void didChangeDependencies(){
+  void didChangeDependencies() {
     super.didChangeDependencies();
 
     DefaultTabController.of(context).addListener(() {
-      setState(() { });
+      setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       color: ThemeColors.container,
-      padding: const EdgeInsets.only(top:12),
+      padding: const EdgeInsets.only(top: 12),
       child: Row(
-       mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _NavBarIcon(
-            title:'Index',
+            title: 'Index',
             isActive: DefaultTabController.of(context).index == 0,
             notActiveIcon: SvgPicture.asset('assets/images/home.svg'),
             activeIcon: SvgPicture.asset('assets/images/home_active.svg'),
-            onTap: ()=> _navigate(0),
+            onTap: () => _navigate(0),
           ),
           _NavBarIcon(
-            title:'Calendar',
+            title: 'Calendar',
             isActive: DefaultTabController.of(context).index == 1,
             notActiveIcon: SvgPicture.asset('assets/images/calendar.svg'),
             activeIcon: SvgPicture.asset('assets/images/calendar_active.svg'),
-            onTap: ()=>  _navigate(1),
+            onTap: () => _navigate(1),
           ),
           const SizedBox(),
           _NavBarIcon(
-            title:'Focus',
+            title: 'Focus',
             isActive: DefaultTabController.of(context).index == 2,
             notActiveIcon: SvgPicture.asset('assets/images/clock.svg'),
             activeIcon: SvgPicture.asset('assets/images/clock_active.svg'),
             onTap: () => _navigate(2),
           ),
           _NavBarIcon(
-            title:'Profile',
+            title: 'Profile',
             isActive: DefaultTabController.of(context).index == 3,
             notActiveIcon: SvgPicture.asset('assets/images/user.svg'),
             activeIcon: SvgPicture.asset('assets/images/user_active.svg'),
             onTap: () => _navigate(3),
-          )
+          ),
         ],
-      )
-
+      ),
     );
   }
 }
@@ -82,7 +81,7 @@ class _NavBarIcon extends StatelessWidget {
     required this.notActiveIcon,
     required this.activeIcon,
     required this.onTap,
-    }) : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,12 +90,11 @@ class _NavBarIcon extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       child: Column(
         children: [
-          isActive ? activeIcon: notActiveIcon,
-          const SizedBox(height: 8,),
-          Text(title, style: ThemeFonts.r12,),
+          isActive ? activeIcon : notActiveIcon,
+          const SizedBox(height: 8),
+          Text(title, style: ThemeFonts.r12),
         ],
       ),
     );
   }
 }
-

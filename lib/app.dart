@@ -8,8 +8,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(
-      create:(context) =>  TodoListCubit(),
+    return BlocProvider(
+      create: (context) => TodoListCubit(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: AppScreen(),
