@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lesson17/screens/app_screen.dart';
-import 'package:lesson17/state/todo_list_cubit.dart';
+import 'package:todo/screens/app_screen.dart';
+import 'package:todo/state/todo_list/todo_list_cubit.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
